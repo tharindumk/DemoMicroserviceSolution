@@ -2,16 +2,16 @@ networks:
   backend:
 
 services:
-  # customerdb:
-  #   container_name: customer-db
-  #   image: mcr.microsoft.com/mssql/server:2019-latest
-  #   environment:
-  #   - ACCEPT_EULA=Y
-  #   - SA_PASSWORD=******
-  #   networks:
-  #       - backend   
-  #   ports:
-  #    - "8001:1433"
+  customerdb:
+    container_name: customer-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=******
+    networks:
+      - backend   
+    ports:
+      - "8001:1433"
   customerwebapi:
     container_name: customer-api
     image: ${DOCKER_REGISTRY-}customerwebapi
@@ -26,4 +26,4 @@ services:
     - DB_HOST=CustomerDB
     - DB_NAME=Customer
     - DB_USER=sa
-    - DB_SA_PASSWORD=Tharindu@1984
+    - DB_SA_PASSWORD=******
